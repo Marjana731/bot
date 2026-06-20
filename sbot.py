@@ -1,9 +1,8 @@
 import asyncio
-from aiogram import Bot, Dispatcher, Router, types, F
+from aiogram import Bot, Dispatcher, F
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardButton, InlineKeyboardMarkup, \
-    CallbackQuery, Message, ReplyKeyboardRemove
-from aiogram.fsm.context import FSMContext
-from aiogram.fsm.state import State, StatesGroup
+    CallbackQuery, Message
+from random import choice
 
 a = Bot(token="8958110452:AAFz1pbTyQFg3a4Nem4h6Sd7LoMPQRoWpuM")
 dp = Dispatcher()
@@ -11,9 +10,413 @@ dp = Dispatcher()
 btn1 = KeyboardButton(text="Вибір інструменту")
 btn2 = KeyboardButton(text="Список пісень")
 btn3 = KeyboardButton(text="Пошук акордів")
+btn4 = KeyboardButton(text="Випадкова пісня")
 
+songs = [''''Perfect' - Ed Sheeran
+
+[Intro]
+G
+
+[Verse 1]
+          G        Em
+I found a love for me
+              C                            D
+Darling, just dive right in, and follow my lead
+                G          Em
+Well, I found a girl beautiful and sweet
+        C                                     D
+I never knew you were the someone waiting for me
+
+[Pre-Chorus]
+                                G
+Cause we were just kids when we fell in love
+            Em                      C                G  D
+Not knowing what it was, I will not give you up this ti-ime
+             G                           Em
+Darling just kiss me slow, your heart is all I own
+            C                     D
+And in your eyes you're holding mine
+
+[Chorus]
+      Em   C             G          D              Em
+Baby, I'm dancing in the dark, with you between my arms
+C                G     D                Em
+Barefoot on the grass, listening to our favourite song
+          C                G                 D              Em
+When you said you looked a mess, I whispered underneath my breath
+         C                G        D          G
+But you heard it, darling you look perfect tonight
+
+|(G) D/F# Em D | C  D  |
+
+[Verse 2]
+                G                    Em
+Well, I found a woman, stronger than anyone I know
+              C                                          D
+She shares my dreams, I hope that someday I'll share her home
+           G             Em
+I found a love, to carry more than just my secrets
+         C                              D
+To carry love, to carry children of our own
+
+[Pre-Chorus]
+                             G                     Em
+We are still kids, but we're so in love, fighting against all odds
+             C               G  D
+I know we'll be alright this ti-ime
+             G                              Em
+Darling just hold my hand, be my girl, I'll be your man
+         C               D
+I see my future in your eyes
+
+[Chorus]
+      Em   C              G         D              Em
+Baby, I'm dancing in the dark, with you between my arms
+C                G     D                Em
+Barefoot on the grass, listening to our favourite song
+        C                G                D
+When I saw you in that dress, looking so beautiful
+  Em       C                  G        D          G
+I don't deserve this, darling you look perfect tonight
+
+[Interlude]
+|(G) | G | Em | % |
+| C  | % | D  | % |
+
+[Chorus]
+      Em   C              G         D              Em
+Baby, I'm dancing in the dark, with you between my arms
+C                G     D                Em
+Barefoot on the grass, listening to our favourite song
+        C              G               D             Em
+I have faith in what I see, now I know I have met an angel
+    C          G         D
+In person, and she looks perfect
+
+[Outro]
+  G/B     C           Dsus4    D          G
+I don't deserve this, you look perfect tonight
+
+|(G) D/F# Em D | C  D  | G''',
+        ''''Let her go' - Passenger
+        
+                           F                       C
+Well you only need the light when it s burning low
+              G                       Am
+Only miss the sun when it s starts to snow
+               F                           C       G
+Only know your love her when you let her Go
+                      F                        C
+Only know you ve been high when you re feeling low
+              G                        Am
+Only hate the road when you re missin  home
+               F                         C
+Only know your love her when you ve let her Go
+G
+  And you let her Go
+
+Am   F   G   Em
+Am   F   G
+
+Am                            F
+Staring at the bottom of your glass
+        G                            Em
+Hoping one day you will make a dream last
+               Am               F          G
+The dreams come slow and goes so fast
+    Am                          F
+You see her when you close your eyes
+      G                           Em
+Maybe one day you will understand why
+               Am           F         G
+Everything you touch surly dies
+
+                       F                       C
+Well you only need the light when it s burning low
+              G                       Am
+Only miss the sun when it s starts to snow
+               F                           C       G
+Only know your love her when you let her Go
+                      F                        C
+Only know you ve been high when you re feeling low
+              G                        Am
+Only hate the road when you re missin  home
+               F                         C
+Only know your love her when you ve let her Go
+Am                            F
+Staring at the ceiling in the dark
+         G                     Em
+Same old empty feeling in your heart
+           Am                 F       G
+Love comes slow and it goes so fast
+         Am                      F
+Well you see her when you fall asleep
+                G                  Em
+But to never to touch and never to keep
+                         Am
+Because you loved her to much
+                 F          G
+And you dive too deep
+
+                       F                       C
+Well you only need the light when it s burning low
+              G                       Am
+Only miss the sun when it s starts to snow
+               F                           C       G
+Only know your love her when you let her Go
+                      F                        C
+Only know you ve been high when you re feeling low
+              G                        Am
+Only hate the road when you re missin  home
+               F                         C
+Only know your love her when you ve let her Go
+
+                Am
+And you let her Go
+      F     G
+Ooooo ooooo oooooo
+                Am
+And you let her Go
+        F     G
+Ooooooo ooooo ooooo
+                Am         F    G   Em
+And you let her Go
+
+
+Am    F    G
+
+                       F                       C
+Well you only need the light when it s burning low
+              G                       Am
+Only miss the sun when it s starts to snow
+               F                           C       G
+Only know your love her when you let her Go
+                      F                        C
+Only know you ve been high when you re feeling low
+              G                        Am
+Only hate the road when you re missin  home
+               F                         C
+Only know your love her when you ve let her Go
+G
+  And you let her Go
+
+                       F                       C
+Well you only need the light when it s burning low
+              G                       Am
+Only miss the sun when it s starts to snow
+               F                           C       G
+Only know your love her when you let her Go
+                      F                        C
+Only know you ve been high when you re feeling low
+              G                        Am
+Only hate the road when you re missin  home
+               F                         C
+Only know your love her when you ve let her Go
+G                             Am
+  And you let her go''',
+        ''''Let it be' - The Beatles
+        
+        [Verse 1]
+C                     G                 Am     Am7  F
+When I find myself in times of trouble, Mother Mary comes to me
+C                 G              F  (Hit E note on D string)(Hit D String) C
+Speaking words of wisdom, let it be
+C                 G                Am       Am7      F
+And in my hour of darkness, She is standing right in front of me
+C                 G              F  (Hit E note on D string)(Hit D String) C
+Speaking words of wisdom, Let it be
+
+[Chorus]
+       Am         G          F          C
+Let it be, let it be, let it be, let it be
+C                G              F (Hit E note on D string)(Hit D String) C
+Whisper words of wisdom, let it be
+
+[Verse 2]
+C                   G               Am        Am7       F
+And when the broken hearted people, Living in the world agree
+C                G              F  (Hit E note on D string)(Hit D String) C
+There will be an answer, let it be
+C                   G               Am        Am7       F
+But though they may be parted, There is still a chance that they will see
+C                G              F  (Hit E note on D string)(Hit D String) C
+There will be an answer, let it be
+
+[Chorus]
+       Am         G          F          C
+Let it be, let it be, let it be, let it be
+C                G              F (Hit E note on D string)(Hit D String) C
+There will be an answer, let it be
+Am         G          F          C
+Let it be, let it be, let it be, let it be
+C                G              F (Hit E note on D string)(Hit D String) C
+Whisper words of wisdom, let it be
+[Chorus]
+       Am         G          F          C
+Let it be, let it be, let it be, let it be
+C                G              F (Hit E note on D string)(Hit D String) C
+Whisper words of wisdom, let it be
+
+[Verse 3]
+C                   G                  Am            Am7  F
+And when the night is cloudy, there is still a light that shines on me
+C                G              F  (Hit E note on D string)(Hit D String) C
+Shine on till tomorrow, let it be
+C                   G                   Am   Am7      F
+I wake up to the sound of music, Mother Mary comes to me
+C                G              F  (Hit E note on D string)(Hit D String) C
+Speaking words of wisdom, let it be
+
+[Chorus]
+       Am         G          F          C
+Let it be, let it be, let it be, let it be
+C                G              F (Hit E note on D string)(Hit D String) C
+Whisper words of wisdom, let it be
+Am         G          F          C
+Let it be, let it be, let it be, let it be
+C                G              F (Hit E note on D string)(Hit D String) C
+Whisper words of wisdom, let it be
+
+That's right, BOTH SOLOS! And they're right.
+Listen to the songs for timing. Rock on...''',
+        ''''The Loneliest' - Maneskin
+        
+        Intro
+D
+..You’ll be the saddest part of me
+A/C#                                             Bm
+..A part of me that will never be mine
+ 
+It’s obvious
+A
+..Tonight is gonna be the loneliest
+D
+..You’re still the oxygen I breathe
+A/C#                                              Bm
+..I see your face when I close my eyes
+ 
+It’s torturous
+A
+..Tonight is gonna be the loneliest
+ 
+Verse 1
+D                                             A/C#
+..There’s a few lines that I have wrote
+                                              Bm
+In case of death, that’s what I want
+                      A
+That’s what I want
+D                                          A/C#
+..So don’t be sad when I’ll be gone
+                                                  Bm
+There’s just one thing I hop? you know
+                 A
+I loved you so
+          D
+‘Cause I don’t even care about the time I’ve got left here
+      A/C#
+The only thing I know now is that I want to spent it
+Em
+..With you, with you
+ 
+Nobody else here
+A
+..Tonight is gonna be the loneliest
+ 
+Chorus
+D
+..You’ll be the saddest part of me
+A/C#                                             Bm
+..A part of me that will never be mine
+ 
+It’s obvious
+G
+..Tonight is gonna be the loneliest
+D
+..You’re still the oxygen I breathe
+A/C#                                              Bm
+..I see your face when I close my eyes
+ 
+It’s torturous
+A
+..Tonight is gonna be the loneliest
+ 
+Verse 2
+D
+..I’m sorry but I gotta go
+A/C#                                            Bm
+..If you’ll ever miss me give this song
+              A
+Another go
+      D
+And I just keep on thinking how you made me feel better
+      A/C#
+And all the crazy little things that we did together
+Em
+In the end, in the end, it doesn’t matter
+    A
+If tonight is gonna be the loneliest
+ 
+Chorus
+D
+..You’ll be the saddest part of me
+A/C#                                             Bm
+..A part of me that will never be mine
+ 
+It’s obvious
+G
+..Tonight is gonna be the loneliest
+D
+..You’re still the oxygen I breathe
+A/C#                                              Bm
+..I see your face when I close my eyes
+ 
+It’s torturous
+A
+..Tonight is gonna be the loneliest
+ 
+Guitar solo
+D A/C#Bm G
+….…….…...
+D A/C#Bm G
+….…….…...
+ 
+Chorus
+D
+..You’ll be the saddest part of me
+A/C#                                             Bm
+..A part of me that will never be mine
+ 
+It’s obvious
+G
+..Tonight is gonna be the loneliest
+D
+..You’re still the oxygen I breathe
+A/C#                                              Bm
+..I see your face when I close my eyes
+ 
+It’s torturous
+A
+..Tonight is gonna be the loneliest
+D
+..You’ll be the saddest part of me
+A/C#                                             Bm
+..A part of me that will never be mine
+ 
+It’s obvious
+G
+..Tonight is gonna be the loneliest
+D
+..You’re still the oxygen I breathe
+A/C#                                              Bm
+..I see your face when I close my eyes
+ 
+It’s torturous
+A                                           D
+..Tonight is gonna be the loneliest''']
 users = {}
-kb = ReplyKeyboardMarkup(keyboard=[[btn1, btn2], [btn3]])
+
+kb = ReplyKeyboardMarkup(keyboard=[[btn1, btn2], [btn3, btn4]])
 
 guitarChords = {
     'C':'''1 струна - 0
@@ -21,7 +424,7 @@ guitarChords = {
     3 струна - 0
     4 струна - 2
     5 струна - 3
-    6 струна - X''',
+    6 струна - 0''',
 
     'Cm':'''1 струна - 3
     2 струна - 4
@@ -91,14 +494,14 @@ guitarChords = {
     3 струна - 2
     4 струна - 2
     5 струна - 0
-    6 струна - X''',
+    6 струна - 0''',
 
     'Am':'''1 струна - 0
     2 струна - 1
     3 струна - 2
     4 струна - 2
     5 струна - 0
-    6 струна - X''',
+    6 струна - 0''',
 
     'B':'''1 струна - 1
     2 струна - 3
@@ -209,15 +612,18 @@ btn3 = [
     ],
     [
         InlineKeyboardButton(text="'Let it be' - The Beatles", callback_data="button_5_pressed")
+    ],
+    [
+        InlineKeyboardButton(text="'The Loneliest' - Maneskin", callback_data="button_6_pressed")
     ]
 ]
 kb3 = InlineKeyboardMarkup(inline_keyboard=btn3)
 
 
 @dp.message(F.text == "/start")
-async def start(message: Message, state: FSMContext):
+async def start(message: Message):
     await message.answer(
-        "Привіт! Ласкаво просимо до «Збірника акордів»! Тут ти можеш швидко знайти акорди до улюблених пісень, переглянути тексти, підібрати тональність та вдосконалювати свою гру на гітарі. Просто напиши назву пісні або виконавця, і я допоможу знайти потрібні акорди.")
+        "Привіт! Ласкаво просимо до «Збірника акордів»! Тут ти можеш швидко знайти акорди до улюблених пісень, переглянути тексти та вдосконалювати свою гру на гітарі. Просто напиши і я допоможу знайти потрібні акорди.")
     await message.answer("Виберіть дію", reply_markup=kb)
 
 
@@ -241,21 +647,10 @@ async def prs2(callback_query: CallbackQuery):
 async def chord(message: Message):
     await message.answer("Напишіть акорд")
 
-@dp.message()
-async def search(message: Message):
-
-    user_id = message.from_user.id
-    chords = message.text
-
-    if user_id not in users:
-        await message.answer("Спочатку виберіть інструмент")
-        return
-
-    if users[user_id] == 1:
-        await message.answer(guitarChords[chords])
-
-    elif users[user_id] == 0:
-        await message.answer(ukuleleChords[chords])
+@dp.message(F.text == "Випадкова пісня")
+async def rSong(message: Message):
+    await message.answer("Випадкова пісня")
+    await message.answer(choice(songs))
 
 @dp.message(F.text == "Список пісень")
 async def song(message: Message):
@@ -535,10 +930,157 @@ That's right, BOTH SOLOS! And they're right.
 Listen to the songs for timing. Rock on...''')
 
 
+@dp.callback_query(F.data == "button_6_pressed")
+async def prs6(callback_query: CallbackQuery):
+    await callback_query.message.answer('''Intro
+D
+..You’ll be the saddest part of me
+A/C#                                             Bm
+..A part of me that will never be mine
+ 
+It’s obvious
+A
+..Tonight is gonna be the loneliest
+D
+..You’re still the oxygen I breathe
+A/C#                                              Bm
+..I see your face when I close my eyes
+ 
+It’s torturous
+A
+..Tonight is gonna be the loneliest
+ 
+Verse 1
+D                                             A/C#
+..There’s a few lines that I have wrote
+                                              Bm
+In case of death, that’s what I want
+                      A
+That’s what I want
+D                                          A/C#
+..So don’t be sad when I’ll be gone
+                                                  Bm
+There’s just one thing I hop? you know
+                 A
+I loved you so
+          D
+‘Cause I don’t even care about the time I’ve got left here
+      A/C#
+The only thing I know now is that I want to spent it
+Em
+..With you, with you
+ 
+Nobody else here
+A
+..Tonight is gonna be the loneliest
+ 
+Chorus
+D
+..You’ll be the saddest part of me
+A/C#                                             Bm
+..A part of me that will never be mine
+ 
+It’s obvious
+G
+..Tonight is gonna be the loneliest
+D
+..You’re still the oxygen I breathe
+A/C#                                              Bm
+..I see your face when I close my eyes
+ 
+It’s torturous
+A
+..Tonight is gonna be the loneliest
+ 
+Verse 2
+D
+..I’m sorry but I gotta go
+A/C#                                            Bm
+..If you’ll ever miss me give this song
+              A
+Another go
+      D
+And I just keep on thinking how you made me feel better
+      A/C#
+And all the crazy little things that we did together
+Em
+In the end, in the end, it doesn’t matter
+    A
+If tonight is gonna be the loneliest
+ 
+Chorus
+D
+..You’ll be the saddest part of me
+A/C#                                             Bm
+..A part of me that will never be mine
+ 
+It’s obvious
+G
+..Tonight is gonna be the loneliest
+D
+..You’re still the oxygen I breathe
+A/C#                                              Bm
+..I see your face when I close my eyes
+ 
+It’s torturous
+A
+..Tonight is gonna be the loneliest
+ 
+Guitar solo
+D A/C#Bm G
+….…….…...
+D A/C#Bm G
+….…….…...
+ 
+Chorus
+D
+..You’ll be the saddest part of me
+A/C#                                             Bm
+..A part of me that will never be mine
+ 
+It’s obvious
+G
+..Tonight is gonna be the loneliest
+D
+..You’re still the oxygen I breathe
+A/C#                                              Bm
+..I see your face when I close my eyes
+ 
+It’s torturous
+A
+..Tonight is gonna be the loneliest
+D
+..You’ll be the saddest part of me
+A/C#                                             Bm
+..A part of me that will never be mine
+ 
+It’s obvious
+G
+..Tonight is gonna be the loneliest
+D
+..You’re still the oxygen I breathe
+A/C#                                              Bm
+..I see your face when I close my eyes
+ 
+It’s torturous
+A                                           D
+..Tonight is gonna be the loneliest''')
 
+@dp.message()
+async def search(message: Message):
 
+    user_id = message.from_user.id
+    chords = message.text
 
+    if user_id not in users:
+        await message.answer("Спочатку виберіть інструмент")
+        return
 
+    if users[user_id] == 1:
+        await message.answer(guitarChords[chords])
+
+    elif users[user_id] == 0:
+        await message.answer(ukuleleChords[chords])
 
 async def main():
     await dp.start_polling(a)
