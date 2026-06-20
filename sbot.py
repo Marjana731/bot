@@ -229,19 +229,33 @@ async def inst(message: Message):
 @dp.callback_query(F.data == "button_1_pressed")
 async def prs1(callback_query: CallbackQuery):
     await callback_query.message.answer("Ви вибрали гітару")
-    users[callback_query.message.from_user.id] = 1
+    users[callback_query.from_user.id] = 1
 
 
 @dp.callback_query(F.data == "button_2_pressed")
 async def prs2(callback_query: CallbackQuery):
     await callback_query.message.answer("Ви вибрали укулеле")
-    users[callback_query.message.from_user.id] = 0
+    users[callback_query.from_user.id] = 0
 
 @dp.message(F.text == "Пошук акордів")
 async def chord(message: Message):
     await message.answer("Напишіть акорд")
 
+@dp.message()
+async def search(message: Message):
 
+    user_id = message.from_user.id
+    chords = message.text
+
+    if user_id not in users:
+        await message.answer("Спочатку виберіть інструмент")
+        return
+
+    if users[user_id] == 1:
+        await message.answer(guitarChords[chords])
+
+    elif users[user_id] == 0:
+        await message.answer(ukuleleChords[chords])
 
 @dp.message(F.text == "Список пісень")
 async def song(message: Message):
